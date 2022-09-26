@@ -5,7 +5,7 @@ const app = express();
 require("dotenv").config();
 const router = require("./router/index");
 var corsOptions = {
-    origin: "http://localhost:8081"
+    origin : "http://localhost:8081"
 };
 
 app.use(cors(corsOptions));
@@ -14,9 +14,9 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
-
+app.use(express.urlencoded({extended : true}));
 const db = require("./models");
+// db.sequelize.sync({ force: true })
 db.sequelize.sync()
     .then(() => {
         console.log("Synced db.");
@@ -25,9 +25,8 @@ db.sequelize.sync()
         console.log("Failed to sync db: " + err.message);
     });
 
-
 app.use(router)
-    // set port, listen for requests
+// set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);

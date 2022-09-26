@@ -7,7 +7,7 @@ const getComments = catchAsync(async(req, res, next) => {
     return res.status(httpStatus.OK).json({ comments });
 })
 const getComment = catchAsync(async(req, res, next) => {
-    const comment = await commentService.getComment(req.query.id);
+    const comment = await commentService.getComment(req.params.id);
     return res.status(httpStatus.OK).json({ comment })
 })
 
@@ -25,11 +25,12 @@ const updateComment = catchAsync(async(req, res, next) => {
 })
 
 const deleteComment = catchAsync(async(req, res, next) => {
-    const deleteComment = await commentService.deleteComment(id);
+    const deleteComment = await commentService.deleteComment(req.params.id);
     return res.status(httpStatus.OK).json({ deleteComment })
 })
 const getCommentWithIdTutortial = catchAsync(async(req, res, next) => {
-    const getCommentWithIdTutortil = await commentService.getCommentWithIdTutortial(req.params.id)
+    const getCommentWithIdTutortial = await commentService.getCommentWithIdTutortial(req.params.tutorialId);
+    return res.status(httpStatus.OK).json({ getCommentWithIdTutortial })
 })
 module.exports = {
     getComments,

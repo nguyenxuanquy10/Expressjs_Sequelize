@@ -13,5 +13,7 @@ route('/:id')
     .get(commentController.getComment)
     .patch(commentController.updateComment)
     .delete(commentController.deleteComment)
-
+router.
+route("/tutorial/:tutorialId")
+    .get(commentController.getCommentWithIdTutortial)
 module.exports = router;
